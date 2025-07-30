@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "message": "User created successfully",
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg3Y2JlZWQ2ODQ1YjIxNjIyZWRjMzUiLCJpYXQiOjE3NTM3MzAwMzAsImV4cCI6MTc1MzgxNjQzMH0.iQcvDh0RlJneodNNswMTg9vZXkAKyNDKlKnYemmDEgk",
+    "user": {
+      "name": "NuwanaDev",
+      "email": "nuwan@dev.com",
+      "password": "$2b$10$0hC0y8eLkCq/bPo7jisRH.56CTcqDRjOnPXNVsKg0n58Q2SNzTchO",
+      "_id": "6887cbeed6845b21622edc35",
+      "createdAt": "2025-07-28T19:13:50.075Z",
+      "updatedAt": "2025-07-28T19:13:50.075Z",
+      "__v": 0
+    }
+  }
+}
