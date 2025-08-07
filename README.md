@@ -1,8 +1,8 @@
 # 📆 Subscription Tracker API
 
-A production-ready **Node.js + Express API** for managing and tracking user subscriptions, created with the [JS Mastry Complete Backend Course](https://www.youtube.com/watch?v=rOpEN1JDaD0).
+A production-ready **Node.js + Express API** for managing and tracking user subscriptions, inspired by the [JavaScript Mastery Backend Course](https://www.youtube.com/watch?v=fgTGADljAeg).
 
-> Built as a learning project to understand real-world API architecture, email workflows, authentication, and backend security.
+> 🧠 This was a hands-on learning project. I followed the course closely, understanding each decision, and extending parts to build a deeper backend foundation.
 
 ---
 
@@ -150,15 +150,9 @@ Please open issues or discussions if you'd like to suggest improvements.
 
 ## 🙌 Shoutout
 
-## 📚 Tutorial Reference
+Special thanks to [JavaScript Mastery](https://www.youtube.com/@javascriptmastery) for the amazing backend course.
 
-This project was originally based on:
-
-**[Complete Backend Course | Build and Deploy Your First Production-Ready API](https://www.youtube.com/watch?v=fgTGADljAeg)**  
-by [JavaScript Mastery](https://www.youtube.com/@javascriptmastery)
-
-> Covers everything from HTTP, API types, backend architecture, authentication, workflows, email automation, to VPS deployment.  
-> I followed along, built it step-by-step, and added my own improvements.
+This repo is a mix of course code and my own learning experiments — especially with security, email automation, and scalable structure.
 
 ---
 
