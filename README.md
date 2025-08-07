@@ -1,109 +1,165 @@
-# Subscription Tracker
+# 📆 Subscription Tracker API
 
-A production-ready Node.js API for managing and tracking user subscriptions, inspired by the [JavaScript Mastery](https://www.youtube.com/@javascriptmastery) YouTube channel's "Complete Backend Course | Build and Deploy Your First Production-Ready API" video.
+A production-ready **Node.js + Express API** for managing and tracking user subscriptions, created with the [JS Mastry Complete Backend Course](https://www.youtube.com/watch?v=rOpEN1JDaD0).
 
-## Features
+> Built as a learning project to understand real-world API architecture, email workflows, authentication, and backend security.
 
-- User authentication (JWT-based)
-- Subscription CRUD operations
-- Automated email notifications (Nodemailer)
-- Workflow automation for subscription events
-- MongoDB integration
-- Modular, scalable architecture
-- Robust error handling and middleware
+---
 
-## Project Structure
+## 🚀 Features
 
-```
+* ✅ JWT-based user authentication
+* 📅 Full subscription CRUD operations
+* 📧 Automated email reminders with Upstash Workflows
+* 🔐 Advanced rate-limiting and bot protection via Arcjet
+* 🧠 MongoDB & Mongoose schema modeling
+* ⚙️ Global error handling, input validation, and logging
+* 🧰 Modular, scalable folder structure
+
+---
+
+## 🛠️ Tech Stack
+
+* **Node.js** + **Express.js**
+* **MongoDB** + **Mongoose**
+* **JWT** for authentication
+* **Nodemailer** for email handling
+* **Arcjet** for rate limiting and protection
+* **Upstash Workflows** for automation
+* **dotenv**, **morgan**, **bcryptjs**, and more
+
+---
+
+## 📁 Project Structure
+
+```bash
 .
 ├── app.js                   # Main application entry point
-├── config/                  # Configuration files (env, nodemailer, upstash, arcjet)
-├── controllers/             # Route controllers (auth, subscription, user, workflow)
-├── database/                # MongoDB connection setup
-├── middlewares/             # Custom middleware (auth, error, arcjet)
-├── models/                  # Mongoose models (user, subscription)
+├── config/                  # Env, nodemailer, Arcjet, Upstash config
+├── controllers/             # Logic for each route
+├── database/                # MongoDB connection logic
+├── middlewares/             # Auth, error, and Arcjet middleware
+├── models/                  # User and Subscription schemas
 ├── routes/                  # Express route definitions
-├── utils/                   # Utility functions (email templates, send email)
-├── package.json
-└── jsconfig.json
+├── utils/                   # Email templates, sendMail, helpers
+├── package.json             # Dependencies and metadata
+└── jsconfig.json            # Path aliases
 ```
 
-## Getting Started
+---
 
-### Prerequisites
+## 📅 API Endpoints
 
-- Node.js (v16+ recommended)
-- MongoDB instance (local or cloud)
+### 🔐 Auth (`/api/auth`)
 
-### Installation
+* `POST /register`
+* `POST /login`
 
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/nuwandev/subscription-tracker.git
-   cd subscription-tracker
-   ```
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
-3. Configure environment variables:
-   - Edit `config/env.js` with your credentials (MongoDB URI, email, etc.)
-4. Start the application:
-   ```sh
-   node app.js
-   ```
-   Or for development:
-   ```sh
-   npx nodemon app.js
-   ```
+### 👤 Users (`/api/users`)
 
-## API Endpoints
+* `POST /` – Create new user *(WIP)*
+* `PUT /:id` – Update user *(WIP)*
+* `DELETE /:id` – Delete user *(WIP)*
 
-- **Auth:** `/api/auth` (register, login)
-- **Users:** `/api/users`
-- **Subscriptions:** `/api/subscriptions`
-- **Workflows:** `/api/workflows`
+### 💳 Subscriptions (`/api/subscriptions`)
 
-See the `routes/` directory for detailed endpoint documentation.
+* `POST /` – Create subscription
+* `GET /` – Get all subscriptions *(WIP)*
+* `GET /:id` – Get subscription by ID *(WIP)*
+* `PUT /:id` – Update subscription *(WIP)*
+* `DELETE /:id` – Delete subscription *(WIP)*
+* `PUT /:id/cancel` – Cancel subscription *(WIP)*
+* `GET /upcoming-renewals` – Get upcoming renewals *(WIP)*
 
-## Planned & Unimplemented Endpoints
+### ♻️ Workflows (`/api/workflows`)
 
-The following endpoints are present in the codebase but are currently stubs or need full implementation. Contributions are welcome!
+* Automates emails & reminders via Upstash
 
-### User Routes (`/api/users`)
+---
 
-- `POST /` — Create new user (not implemented)
-- `PUT /:id` — Update user (not implemented)
-- `DELETE /:id` — Delete user (not implemented)
+## 📧 Email Notifications
 
-### Subscription Routes (`/api/subscriptions`)
+* Email templates and handlers in `utils/email-template.js`
+* Notifications for upcoming renewals & events
+* Built using **Nodemailer** and **Upstash Workflow**
 
-- `GET /` — Get all subscriptions (not implemented)
-- `GET /:id` — Get subscription details (not implemented)
-- `PUT /:id` — Update subscription (not implemented)
-- `DELETE /:id` — Delete subscription (not implemented)
-- `PUT /:id/cancel` — Cancel subscription (not implemented)
-- `GET /upcoming-renewals` — Get upcoming renewals (not implemented)
+---
 
-If you’d like to contribute, check the corresponding files in `routes/` and `controllers/` and help implement these features!
+## 🔒 Security
 
-## Email Notifications
+* JWT-based session auth
+* Arcjet for abuse protection and rate limiting
+* Custom middleware for validation and error handling
 
-- Configured via `config/nodemailer.js` and templates in `utils/email-template.js`.
-- Automated emails for subscription events (renewals, expirations, etc.).
+---
 
-## Credits
+## ✅ Setup & Installation
 
-This project was built by following the [JavaScript Mastery Complete Backend Course](https://www.youtube.com/watch?v=fgTGADljAeg) on YouTube.
+```bash
+# 1. Clone the repo
+$ git clone https://github.com/nuwandev/subscription-tracker.git
+$ cd subscription-tracker
 
-## Contribution
+# 2. Install dependencies
+$ npm install
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/YourFeature`)
-5. Open a pull request
+# 3. Configure environment
+Edit `config/env.js` with:
+  - MONGO_URI
+  - JWT_SECRET
+  - SMTP credentials (Nodemailer)
+  - Arcjet keys (optional)
 
-## License
+# 4. Run the server
+$ npm run dev
+```
 
-MIT
+---
+
+## 🔄 Roadmap
+
+* [ ] Complete subscription route functionality
+* [ ] Dashboard integration (React or Next.js)
+* [ ] Admin roles & permissions
+* [ ] Logging and analytics support
+
+---
+
+## 🧱 Contributing
+
+This project was built as a learning experience — and contributions are welcome!
+
+```bash
+# Fork the repo
+# Create a new branch
+$ git checkout -b feature/your-feature-name
+# Commit your changes
+$ git commit -m "Add your feature"
+# Push and open a pull request
+```
+
+Please open issues or discussions if you'd like to suggest improvements.
+
+---
+
+## 📄 License
+
+[MIT](LICENSE)
+
+---
+
+## 🙌 Shoutout
+
+## 📚 Tutorial Reference
+
+This project was originally based on:
+
+**[Complete Backend Course | Build and Deploy Your First Production-Ready API](https://www.youtube.com/watch?v=fgTGADljAeg)**  
+by [JavaScript Mastery](https://www.youtube.com/@javascriptmastery)
+
+> Covers everything from HTTP, API types, backend architecture, authentication, workflows, email automation, to VPS deployment.  
+> I followed along, built it step-by-step, and added my own improvements.
+
+---
+
+> Built and maintained by [@nuwandev](https://github.com/nuwandev) ❤️
