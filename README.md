@@ -1,6 +1,6 @@
 # 📆 Subscription Tracker API
 
-A production-ready **Node.js + Express API** for managing and tracking user subscriptions, inspired by the [JavaScript Mastery Backend Course](https://www.youtube.com/watch?v=fgTGADljAeg).
+A production-ready **Node.js + Express API** for managing and tracking user subscriptions, inspired by the [JavaScript Mastery Backend Course](https://www.youtube.com/watch?v=rOpEN1JDaD0).
 
 > 🧠 This was a hands-on learning project. I followed the course closely, understanding each decision, and extending parts to build a deeper backend foundation.
 
