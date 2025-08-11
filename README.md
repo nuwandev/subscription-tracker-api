@@ -116,15 +116,6 @@ $ npm run dev
 
 ---
 
-## 🔄 Roadmap
-
-* [ ] Complete subscription route functionality
-* [ ] Dashboard integration (React or Next.js)
-* [ ] Admin roles & permissions
-* [ ] Logging and analytics support
-
----
-
 ## 🧱 Contributing
 
 This project was built as a learning experience — and contributions are welcome!
@@ -152,7 +143,7 @@ Please open issues or discussions if you'd like to suggest improvements.
 
 Special thanks to [JavaScript Mastery](https://www.youtube.com/@javascriptmastery) for the amazing backend course.
 
-This repo is a mix of course code and my own learning experiments — especially with security, email automation, and scalable structure.
+This repository is a combination of course code and my own learning experiments, particularly in the areas of security, email automation, and scalable structure.
 
 ---
 
