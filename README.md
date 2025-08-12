@@ -26,7 +26,7 @@ A production-ready **Node.js + Express API** for managing and tracking user subs
 * **Nodemailer** for email handling
 * **Arcjet** for rate limiting and protection
 * **Upstash Workflows** for automation
-* **dotenv**, **morgan**, **bcryptjs**, and more
+* **dotenv**, **bcryptjs**, and more
 
 ---
 
@@ -108,7 +108,7 @@ Edit `config/env.js` with:
   - MONGO_URI
   - JWT_SECRET
   - SMTP credentials (Nodemailer)
-  - Arcjet keys (optional)
+  - Arcjet keys
 
 # 4. Run the server
 $ npm run dev
