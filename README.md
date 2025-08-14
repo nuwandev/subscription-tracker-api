@@ -1,150 +1,148 @@
 # 📆 Subscription Tracker API
 
-A production-ready **Node.js + Express API** for managing and tracking user subscriptions, inspired by the [JavaScript Mastery Backend Course](https://www.youtube.com/watch?v=rOpEN1JDaD0).
+[![MIT License](https://img.shields.io/badge/license-MIT-green)](./LICENSE) [![Node Version](https://img.shields.io/badge/node-%3E%3D16-brightgreen)]() [![build](https://img.shields.io/github/actions/workflow/status/nuwandev/subscription-tracker/ci.yml)]()
 
-> 🧠 This was a hands-on learning project. I followed the course closely, understanding each decision, and extending parts to build a deeper backend foundation.
+> A production-ready **Node.js + Express API** for managing subscriptions with JWT authentication, automated email reminders, and a modular, scalable folder structure. Perfect for learning backend patterns or building real-world applications.
 
 ---
 
 ## 🚀 Features
 
-* ✅ JWT-based user authentication
+* ✅ JWT-based authentication and session management
 * 📅 Full subscription CRUD operations
 * 📧 Automated email reminders with Upstash Workflows
-* 🔐 Advanced rate-limiting and bot protection via Arcjet
-* 🧠 MongoDB & Mongoose schema modeling
+* 🔒 Advanced rate-limiting and bot protection via Arcjet
+* 🧠 MongoDB & Mongoose schema modeling with validation
 * ⚙️ Global error handling, input validation, and logging
-* 🧰 Modular, scalable folder structure
+* 🧰 Modular and scalable folder structure
+* ⚡ Ready for production deployment and future extension
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-* **Node.js** + **Express.js**
+* **Node.js** + **Express.js** (ES modules)
 * **MongoDB** + **Mongoose**
 * **JWT** for authentication
 * **Nodemailer** for email handling
 * **Arcjet** for rate limiting and protection
 * **Upstash Workflows** for automation
-* **dotenv**, **bcryptjs**, and more
+* **dotenv**, **bcryptjs**, **cookie-parser**, and more
+* **Development:** `nodemon` for live reload
 
 ---
 
 ## 📁 Project Structure
 
-```bash
+```
 .
-├── app.js                   # Main application entry point
-├── config/                  # Env, nodemailer, Arcjet, Upstash config
-├── controllers/             # Logic for each route
+├── app.js                   # Entry point
+├── config/                  # Environment, Nodemailer, Arcjet, Upstash setup
+├── controllers/             # Business logic for routes
 ├── database/                # MongoDB connection logic
-├── middlewares/             # Auth, error, and Arcjet middleware
-├── models/                  # User and Subscription schemas
+├── middlewares/             # Auth, validation, error handling
+├── models/                  # User & Subscription schemas
 ├── routes/                  # Express route definitions
-├── utils/                   # Email templates, sendMail, helpers
+├── utils/                   # Helpers, email templates
+├── tests/                   # Optional tests
 ├── package.json             # Dependencies and metadata
 └── jsconfig.json            # Path aliases
 ```
 
 ---
 
-## 📅 API Endpoints
-
-### 🔐 Auth (`/api/auth`)
-
-* `POST /register`
-* `POST /login`
-
-### 👤 Users (`/api/users`)
-
-* `POST /` – Create new user *(WIP)*
-* `PUT /:id` – Update user *(WIP)*
-* `DELETE /:id` – Delete user *(WIP)*
-
-### 💳 Subscriptions (`/api/subscriptions`)
-
-* `POST /` – Create subscription
-* `GET /` – Get all subscriptions *(WIP)*
-* `GET /:id` – Get subscription by ID *(WIP)*
-* `PUT /:id` – Update subscription *(WIP)*
-* `DELETE /:id` – Delete subscription *(WIP)*
-* `PUT /:id/cancel` – Cancel subscription *(WIP)*
-* `GET /upcoming-renewals` – Get upcoming renewals *(WIP)*
-
-### ♻️ Workflows (`/api/workflows`)
-
-* Automates emails & reminders via Upstash
-
----
-
-## 📧 Email Notifications
-
-* Email templates and handlers in `utils/email-template.js`
-* Notifications for upcoming renewals & events
-* Built using **Nodemailer** and **Upstash Workflow**
-
----
-
-## 🔒 Security
-
-* JWT-based session auth
-* Arcjet for abuse protection and rate limiting
-* Custom middleware for validation and error handling
-
----
-
-## ✅ Setup & Installation
+## 🔧 Setup & Installation
 
 ```bash
-# 1. Clone the repo
-$ git clone https://github.com/nuwandev/subscription-tracker.git
-$ cd subscription-tracker
+# Clone the repository
+git clone https://github.com/nuwandev/subscription-tracker.git
+cd subscription-tracker
 
-# 2. Install dependencies
-$ npm install
+# Install dependencies
+npm install
 
-# 3. Configure environment
-Edit `config/env.js` with:
-  - MONGO_URI
-  - JWT_SECRET
-  - SMTP credentials (Nodemailer)
-  - Arcjet keys
+# Configure environment variables
+cp env.example .env
+# Edit .env locally with your credentials (never commit real secrets)
 
-# 4. Run the server
-$ npm run dev
+# Run development server
+npm run dev
 ```
 
 ---
 
-## 🧱 Contributing
+## 📦 API Endpoints
 
-This project was built as a learning experience — and contributions are welcome!
+### 🔐 Auth (`/api/v1/auth`)
+
+* `POST /register` — Register a new user
+* `POST /login` — Authenticate user and return JWT
+
+### 👤 Users (`/api/v1/users`)
+
+* `POST /` — Create user (WIP)
+* `PUT /:id` — Update user (WIP)
+* `DELETE /:id` — Delete user (WIP)
+
+### 💳 Subscriptions (`/api/v1/subscriptions`)
+
+* `POST /` — Create subscription (protected)
+* `GET /` — List subscriptions (protected, WIP)
+* `GET /:id` — Get subscription by ID (protected, WIP)
+* `PUT /:id` — Update subscription (protected)
+* `DELETE /:id` — Delete subscription (protected)
+* `PUT /:id/cancel` — Cancel subscription (protected, WIP)
+* `GET /upcoming-renewals` — Fetch upcoming renewals (WIP)
+
+### ♻️ Workflows (`/api/v1/workflows`)
+
+* Automate email reminders via Upstash
+
+---
+
+## 🔁 Authentication Flow
+
+1. Register → user created
+2. Login → JWT returned
+3. Include `Authorization: Bearer <token>` header for protected endpoints
+
+---
+
+## 🔍 Example Requests
+
+**Register user:**
 
 ```bash
-# Fork the repo
-# Create a new branch
-$ git checkout -b feature/your-feature-name
-# Commit your changes
-$ git commit -m "Add your feature"
-# Push and open a pull request
+curl -X POST http://localhost:5500/api/v1/auth/register \
+-H "Content-Type: application/json" \
+-d '{"name":"Demo","email":"demo@example.com","password":"Pass123!"}'
 ```
 
-Please open issues or discussions if you'd like to suggest improvements.
+**Login:**
+
+```bash
+curl -X POST http://localhost:5500/api/v1/auth/login \
+-H "Content-Type: application/json" \
+-d '{"email":"demo@example.com","password":"Pass123!"}'
+```
+
+**Create subscription:**
+
+```bash
+curl -X POST http://localhost:5500/api/v1/subscriptions \
+-H "Authorization: Bearer <JWT_TOKEN>" \
+-H "Content-Type: application/json" \
+-d '{"title":"Netflix","price":9.99,"currency":"USD","renewalDate":"2025-09-01","interval":"monthly","notes":"Family plan"}'
+```
 
 ---
 
 ## 📄 License
 
-[MIT](LICENSE)
+[MIT](./LICENSE)
 
 ---
 
-## 🙌 Shoutout
+## Credits
 
-Special thanks to [JavaScript Mastery](https://www.youtube.com/@javascriptmastery) for the amazing backend course.
-
-This repository is a combination of course code and my own learning experiments, particularly in the areas of security, email automation, and scalable structure.
-
----
-
-> Built and maintained by [@nuwandev](https://github.com/nuwandev) ❤️
+Built and maintained by [@nuwandev](https://github.com/nuwandev). Inspired by [JavaScript Mastery](https://www.youtube.com/@javascriptmastery).
